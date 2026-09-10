@@ -4,6 +4,8 @@ There are two distinct checks: comparing the published seller outputs, and rebui
 
 The historical analytical authority remains the [Stage 3 design](stage-03-measurement-design/Stage_03_Measurement_Design.md), [Stage 4 freeze](stage-04-execution-validation/02_EXACT_RECON_FREEZE.md), and [Finish Gate](stage-05-interpretation/05_FINISH_GATE.md). This guide does not amend their rules.
 
+The [supplied-script index](SUPPLIED_SCRIPTS.md) maps the owner's six Stage 4 uploads to their current, historical, and diagnostic locations. The original import/export commands are still being located.
+
 ## 1. Compare the published outputs
 
 Requirements: Git and Python 3. No third-party Python packages, API keys, R installation, or database are needed for this check.
