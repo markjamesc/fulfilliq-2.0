@@ -123,4 +123,4 @@ ALTER TABLE B_sellers
 -- Next (out of scope for this script): write manifest (row counts, column
 -- order, encoding, null encoding, temporal precision, timezone convention,
 -- file hashes). Do not compute hashes inside this projection script.
--- =============================================================================
+-- =============================================================================
