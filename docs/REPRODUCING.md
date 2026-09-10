@@ -4,7 +4,7 @@ There are two distinct checks: comparing the published seller outputs, and rebui
 
 The historical analytical authority remains the [Stage 3 design](stage-03-measurement-design/Stage_03_Measurement_Design.md), [Stage 4 freeze](stage-04-execution-validation/02_EXACT_RECON_FREEZE.md), and [Finish Gate](stage-05-interpretation/05_FINISH_GATE.md). This guide does not amend their rules.
 
-The [supplied-script index](SUPPLIED_SCRIPTS.md) maps the owner's six Stage 4 uploads to their current, historical, and diagnostic locations. The original import/export commands are still being located.
+The [supplied-script index](SUPPLIED_SCRIPTS.md) maps the owner's six Stage 4 uploads to their current, historical, and diagnostic locations. The [B-table export command has been recovered from the owner's history](EXPORT_HISTORY.md). The original CSV-to-MySQL import script remains missing.
 
 ## 1. Compare the published outputs
 
@@ -89,7 +89,7 @@ Once a matching source database is verified:
 2. Run [plain SQL A](../sql/Stage_04_SQL_A_plain.sql) with a client that stops on the first error. It requires source reads and creation/deletion of its output tables; it does not require stored-routine privileges.
 3. Run [SQL B](../sql/Stage_04_SQL_B.sql) independently against those same source tables. It projects raw relations without using A's judgments. Supply the database as the client default because SQL B does not issue `USE fulfilliq`.
 4. Export A's `seller_id, late_n, eligible_n, LFR, action, membership, selected` from `fulfilliq.a4_judged_seller` to a headered TSV. Export `B_orders`, `B_items`, and `B_sellers` to separate headered TSVs.
-5. Record encoding, null representation, temporal convention, row counts, export order, extraction time, and file hashes. Ensure missing timestamps are read as missing values by R. The exact original TSV export settings still need to be recovered.
+5. Record encoding, null representation, temporal convention, row counts, export order, extraction time, and file hashes. Ensure missing timestamps are read as missing values by R. The [recovered B export command](EXPORT_HISTORY.md) documents its flags and pipeline; the precise PowerShell environment and the compact A export command remain undocumented.
 6. Run R(B) from those exports, freeze both results, then invoke the checker with `--a` and `--b` pointing to the new files. Keep comparison outside both independent builders.
 
 Documented SQL A command:
@@ -104,7 +104,8 @@ Do not assume that hard-coded `source_verified=1` or snapshot labels verify the 
 
 - Received: the three original frozen B TSV files; their hashes matched the existing freeze record. Public distribution of the input package remains pending.
 - Recorded: [owner-reported R and installed package versions](R_ENVIRONMENT.md). A complete dependency record from a successful execution remains pending.
-- Helpful additional owner records, if available: the original source dataset archive/version, import script, and exact TSV export settings.
+- Recovered: [the owner-reported B-table export command](EXPORT_HISTORY.md), with transcription changes and a three-byte file-size discrepancy documented.
+- Helpful additional owner records, if available: the original source dataset archive/version, CSV-to-MySQL import script, compact A export command, and PowerShell version.
 - Next execution step: rerun R(B) from the verified files, preserve the fresh results separately, capture the loaded environment, and compare with the published A output.
 
 The portfolio's recorded simulation completion remains distinct from these outstanding public reproducibility tasks.
