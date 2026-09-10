@@ -29,7 +29,7 @@ The snapshot-alignment script changes metadata labels. Running it does not estab
 
 ## Reproduction status
 
-These files document the analysis implementation and part of its debugging history. The owner has now supplied the B-table MySQL-to-TSV export command. The original Olist CSV-to-MySQL import script remains missing; the compact A export command is also not included in the recovered B export.
+These files document the analysis implementation and part of its debugging history. The owner has now supplied the B-table MySQL-to-TSV export command. The owner-supplied conversation screenshot reports that the Olist import was run through interactive `LOAD DATA LOCAL INFILE` queries and no standalone import script was saved. The exact queries were not supplied; any future scripted import would be a new reconstruction. The compact A export command is also not included in the recovered B export.
 
 The supplied scripts were inspected and compared with GitHub, not executed during this addition. The earlier output comparison remains distinct from a fresh raw-input rebuild.
 
