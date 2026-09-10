@@ -4,7 +4,7 @@ There are two distinct checks: comparing the published seller outputs, and rebui
 
 The historical analytical authority remains the [Stage 3 design](stage-03-measurement-design/Stage_03_Measurement_Design.md), [Stage 4 freeze](stage-04-execution-validation/02_EXACT_RECON_FREEZE.md), and [Finish Gate](stage-05-interpretation/05_FINISH_GATE.md). This guide does not amend their rules.
 
-The [supplied-script index](SUPPLIED_SCRIPTS.md) maps the owner's six Stage 4 uploads to their current, historical, and diagnostic locations. The [B-table export command has been recovered from the owner's history](EXPORT_HISTORY.md). The original CSV-to-MySQL import script remains missing.
+The [supplied-script index](SUPPLIED_SCRIPTS.md) maps the owner's six Stage 4 uploads to their current, historical, and diagnostic locations. The [B-table export command has been recovered from the owner's history](EXPORT_HISTORY.md). The owner-supplied conversation screenshot reports that the CSV-to-MySQL import was run interactively and no standalone import script was saved.
 
 ## 1. Compare the published outputs
 
@@ -81,7 +81,9 @@ Required source relations:
 | `fulfilliq.raw_order_items` | `order_id, order_item_id` | 112,650 |
 | `fulfilliq.raw_sellers` | `seller_id` | 3,095 |
 
-The original source archive/checksums and an executable raw-data import recipe are not committed. Row counts alone cannot prove source identity. Recover and document that import provenance before claiming a fully reproducible SQL rebuild.
+The original source archive/checksums and an executable raw-data import recipe are not committed. A conversation screenshot supplied by the owner on September 10, 2026 reports that the import used interactive `LOAD DATA LOCAL INFILE` queries, with MySQL Shell used for reviews cleanup, and was not saved as an import script. This records the reported method; the exact query text and execution log were not supplied. Reviews cleanup is separate from the three-table analytical path used here.
+
+There is no saved import file to keep requesting on the basis of that report. Any future import script must be labeled as a new reconstruction and validated against the documented schema and data. Row counts alone cannot prove source identity or exact historical reproduction.
 
 Once a matching source database is verified:
 
@@ -105,7 +107,8 @@ Do not assume that hard-coded `source_verified=1` or snapshot labels verify the 
 - Received: the three original frozen B TSV files; their hashes matched the existing freeze record. Public distribution of the input package remains pending.
 - Recorded: [owner-reported R and installed package versions](R_ENVIRONMENT.md). A complete dependency record from a successful execution remains pending.
 - Recovered: [the owner-reported B-table export command](EXPORT_HISTORY.md), with transcription changes and a three-byte file-size discrepancy documented.
-- Helpful additional owner records, if available: the original source dataset archive/version, CSV-to-MySQL import script, compact A export command, and PowerShell version.
+- Import history clarified: the supplied conversation reports interactive `LOAD DATA LOCAL INFILE` execution; no standalone import script was saved. Exact query text remains unavailable.
+- Optional historical evidence, if already available: the original source dataset archive/version, SQL query history, compact A export command, and PowerShell version. These are not prerequisites for rebuilding R(B) from the verified TSVs.
 - Next execution step: rerun R(B) from the verified files, preserve the fresh results separately, capture the loaded environment, and compare with the published A output.
 
 The portfolio's recorded simulation completion remains distinct from these outstanding public reproducibility tasks.
