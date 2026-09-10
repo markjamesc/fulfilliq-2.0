@@ -13,6 +13,10 @@ Owner-supplied files reviewed and indexed on September 10, 2026. Four uploads ex
 | `Stage_04_SQL_B.sql` | [Historical SQL B with pending labels](../sql/historical/Stage_04_SQL_B_pending.sql) | Earlier upload with `PENDING_STAGE4_SNAPSHOT_ID` and `PENDING_STAGE4_SOURCE_VERSION`; preserved as supplied. |
 | `_halt_repro.sql` | [Halt-condition diagnostic](../sql/diagnostics/_halt_repro.sql) | Minimal debugging example for the SQL A assertion/stop behavior; preserved as supplied. |
 
+## Recovered export command
+
+The owner subsequently supplied the [B-table export command](../scripts/historical/export_B_tables_to_tsv.ps1). See [export-history notes](EXPORT_HISTORY.md) for its provenance, the public-copy destination parameter, and the observed file-size difference.
+
 ## How to use these records
 
 For the documented reproduction path, start with [plain SQL A](../sql/Stage_04_SQL_A_plain.sql), [current SQL B](../sql/Stage_04_SQL_B.sql), and [R(B)](../r/Stage_04_R_B_rebuild.R).
@@ -25,7 +29,7 @@ The snapshot-alignment script changes metadata labels. Running it does not estab
 
 ## Reproduction status
 
-These files document the analysis implementation and part of its debugging history. They do not include the original Olist CSV-to-MySQL import commands or the MySQL-to-TSV export commands; the owner is searching for those records.
+These files document the analysis implementation and part of its debugging history. The owner has now supplied the B-table MySQL-to-TSV export command. The original Olist CSV-to-MySQL import script remains missing; the compact A export command is also not included in the recovered B export.
 
 The supplied scripts were inspected and compared with GitHub, not executed during this addition. The earlier output comparison remains distinct from a fresh raw-input rebuild.
 
