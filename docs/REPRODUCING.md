@@ -32,13 +32,15 @@ It verifies agreement between committed outputs. It does not establish that the 
 
 The R script requires three files under the repository's `data/` directory: `B_orders.tsv`, `B_items.tsv`, and `B_sellers.tsv`. They are not currently committed.
 
+The owner supplied all three originals during the September 10 follow-up; their hashes matched the recorded freeze. They have not yet been added to the repository, and a fresh R rebuild has not yet been performed.
+
 Restore the original frozen export package and verify it against the existing [Stage 4 freeze record](stage-04-execution-validation/02_EXACT_RECON_FREEZE.md). This guide does not republish local filesystem details or file hashes.
 
 Preserve the original files if making a new extraction. A snapshot label alone cannot establish that a newly exported package contains the same records.
 
 ## 3. Rebuild R(B) without overwriting the published result
 
-Requirements: R and the `tidyverse`, `lubridate`, and `janitor` packages. The original R/package version lock and `sessionInfo()` are not committed, so exact environment reproduction remains undocumented.
+Requirements: R and the `tidyverse`, `lubridate`, and `janitor` packages. The [reported R environment](R_ENVIRONMENT.md) records the owner's current R version and seven installed package versions from console screenshots. It is not a complete dependency lock or confirmation of the original execution environment.
 
 From R with the repository root as the working directory:
 
@@ -96,11 +98,11 @@ mysql --skip-force -u fulfilliq_user -p fulfilliq < sql/Stage_04_SQL_A_plain.sql
 
 Do not assume that hard-coded `source_verified=1` or snapshot labels verify the database. Those are recorded assertions; source verification must precede execution. The historical identity-alignment script also changes labels, not data provenance.
 
-## Remaining inputs from the project owner
+## Reproducibility status and remaining work
 
-- Provide the three original frozen B TSV files, preserving their bytes, or an accessible original package whose checksums can be checked.
-- Recover the source dataset archive/version, import script, and exact TSV export settings used for the freeze.
-- Supply the original R/package environment information if available. Otherwise record the environment of a newly executed reproduction.
-- After these inputs are available, run the raw-data reproduction and preserve its fresh results separately.
+- Received: the three original frozen B TSV files; their hashes matched the existing freeze record. Public distribution of the input package remains pending.
+- Recorded: [owner-reported R and installed package versions](R_ENVIRONMENT.md). A complete dependency record from a successful execution remains pending.
+- Helpful additional owner records, if available: the original source dataset archive/version, import script, and exact TSV export settings.
+- Next execution step: rerun R(B) from the verified files, preserve the fresh results separately, capture the loaded environment, and compare with the published A output.
 
 The portfolio's recorded simulation completion remains distinct from these outstanding public reproducibility tasks.
