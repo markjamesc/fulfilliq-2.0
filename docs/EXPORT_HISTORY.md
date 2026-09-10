@@ -30,7 +30,9 @@ For any new export, use a separate destination directory, record the PowerShell/
 
 ## Remaining history
 
-The original Olist CSV-to-MySQL import script has not been found. That history gap does not block rebuilding R(B) from the three verified B TSVs already supplied.
+A conversation screenshot supplied by the owner on September 10, 2026 reports that the Olist CSV-to-MySQL import used interactive `LOAD DATA LOCAL INFILE` queries, plus MySQL Shell for reviews cleanup, and was never saved as a standalone import script. This is reported process history; exact import queries and an execution log have not been recovered. A future import script would be a new reconstruction rather than the original file.
+
+No further search for a saved import script is required for the R(B) rebuild. The verified B TSVs remain sufficient inputs for that step.
 
 The recovered command covers the B tables. It does not document export of the compact SQL A judged-seller file.
 
