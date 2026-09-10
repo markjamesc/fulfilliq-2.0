@@ -2,6 +2,8 @@
 
 The [published-output checker](check_published_outputs.py) was executed against the committed SQL A and R(B) seller exports during the portfolio documentation update.
 
+A subsequent [fresh R(B) execution](reproduction-2026-09-10/README.md) on the same date reproduced the output byte-for-byte. The checks below describe the earlier output-only comparison.
+
 ## Observed result
 
 | Check | Result |

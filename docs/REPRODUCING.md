@@ -1,6 +1,6 @@
 # Reproducing FulfillIQ 2.0
 
-There are two distinct checks: comparing the published seller outputs, and rebuilding the analysis from raw inputs. The first works with this repository alone. The second still needs the original frozen B export package or a documented regeneration of it.
+There are two distinct checks: comparing the published seller outputs, and rebuilding the analysis from raw inputs. The output comparison works with this repository alone. A [fresh R rebuild has now passed](../validation/reproduction-2026-09-10/README.md) using the supplied frozen B package. Public access to that input package is still pending approval.
 
 The historical analytical authority remains the [Stage 3 design](stage-03-measurement-design/Stage_03_Measurement_Design.md), [Stage 4 freeze](stage-04-execution-validation/02_EXACT_RECON_FREEZE.md), and [Finish Gate](stage-05-interpretation/05_FINISH_GATE.md). This guide does not amend their rules.
 
@@ -34,7 +34,7 @@ It verifies agreement between committed outputs. It does not establish that the 
 
 The R script requires three files under the repository's `data/` directory: `B_orders.tsv`, `B_items.tsv`, and `B_sellers.tsv`. They are not currently committed.
 
-The owner supplied all three originals during the September 10 follow-up; their hashes matched the recorded freeze. They have not yet been added to the repository, and a fresh R rebuild has not yet been performed.
+The owner supplied all three originals during the September 10 follow-up; their hashes matched the recorded freeze. They were used for a successful fresh R rebuild, whose output is byte-identical to the published R(B) CSV. Adding the three input files to the public repository is pending explicit publication approval.
 
 Restore the original frozen export package and verify it against the existing [Stage 4 freeze record](stage-04-execution-validation/02_EXACT_RECON_FREEZE.md). This guide does not republish local filesystem details or file hashes.
 
@@ -67,7 +67,14 @@ Then compare the rebuilt output with the frozen A export:
 python validation/check_published_outputs.py --b results/reproduced/R_B_judged_seller.csv
 ```
 
-This is a fresh R(B) check only if the input package was actually restored and the R code executed successfully. The documented September 10 public-output check did not perform this rebuild.
+A fresh R(B) execution and comparison were completed on September 10 using the supplied frozen inputs. See the [execution evidence](../validation/reproduction-2026-09-10/README.md) and [actual loaded session](../validation/reproduction-2026-09-10/sessionInfo.txt). This is separate from the earlier comparison of two already-published outputs.
+
+For a command-line run with environment capture and an output-directory safeguard, use:
+
+```bash
+Rscript scripts/reproduce_rb.R results/reproduced/my-run
+python validation/check_published_outputs.py --b results/reproduced/my-run/R_B_judged_seller.csv
+```
 
 ## 4. Rebuild SQL from the source database
 
@@ -104,11 +111,11 @@ Do not assume that hard-coded `source_verified=1` or snapshot labels verify the 
 
 ## Reproducibility status and remaining work
 
-- Received: the three original frozen B TSV files; their hashes matched the existing freeze record. Public distribution of the input package remains pending.
-- Recorded: [owner-reported R and installed package versions](R_ENVIRONMENT.md). A complete dependency record from a successful execution remains pending.
+- Received: the three original frozen B TSV files; their hashes matched the existing freeze record. Public distribution of the input package remains pending explicit approval; no additional upload from the owner is needed.
+- Recorded: [owner-reported R and installed package versions](R_ENVIRONMENT.md). The separate successful Linux reproduction now has a [loaded session record](../validation/reproduction-2026-09-10/sessionInfo.txt) and [installed package inventory](../validation/reproduction-2026-09-10/installed_packages.csv).
 - Recovered: [the owner-reported B-table export command](EXPORT_HISTORY.md), with transcription changes and a three-byte file-size discrepancy documented.
 - Import history clarified: the supplied conversation reports interactive `LOAD DATA LOCAL INFILE` execution; no standalone import script was saved. Exact query text remains unavailable.
 - Optional historical evidence, if already available: the original source dataset archive/version, SQL query history, compact A export command, and PowerShell version. These are not prerequisites for rebuilding R(B) from the verified TSVs.
-- Next execution step: rerun R(B) from the verified files, preserve the fresh results separately, capture the loaded environment, and compare with the published A output.
+- Completed: the unchanged R(B) script ran from the verified inputs in a separate Linux environment. Its output was byte-identical to the published R(B) CSV and matched SQL A across all 3,095 sellers on the five compared fields. [Reproduction evidence](../validation/reproduction-2026-09-10/README.md).
 
 The portfolio's recorded simulation completion remains distinct from these outstanding public reproducibility tasks.

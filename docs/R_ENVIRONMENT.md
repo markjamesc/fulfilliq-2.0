@@ -31,3 +31,7 @@ This is a record of the reported current installation, not a complete dependency
 A fresh reproduction should record `sessionInfo()` after loading the project packages and completing the run, together with its output comparison. Additional dependency versions and a successful run remain to be captured.
 
 See [the reproduction guide](REPRODUCING.md) for the frozen-input and execution steps.
+
+## Separate successful reproduction
+
+A fresh run on September 10, 2026 used R 4.3.3 on 64-bit Ubuntu and reproduced the published R(B) CSV byte-for-byte. The [execution evidence](../validation/reproduction-2026-09-10/README.md), [loaded session](../validation/reproduction-2026-09-10/sessionInfo.txt), and [installed package inventory](../validation/reproduction-2026-09-10/installed_packages.csv) record that environment separately from the owner-reported installation above. The historical Windows environment has not been recreated.

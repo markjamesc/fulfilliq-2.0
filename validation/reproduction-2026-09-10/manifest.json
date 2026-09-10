@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "verification_date": "2026-09-10",
+  "scope": "Fresh unchanged R(B) execution from frozen B TSVs; comparison to frozen SQL A and published R(B)",
+  "source_repository_commit": "3a7387b8d878bd357344a86686349d7a36eb8056",
+  "builder_path": "r/Stage_04_R_B_rebuild.R",
+  "builder_sha256": "7c74329d7877ea5bfb27e20e578d09b1b9c16bdc9ffb3d1fe11e9efdc1433284",
+  "builder_modified": false,
+  "input_hashes_match_recorded_freeze": true,
+  "R_execution_exit_code": 0,
+  "comparison_exit_code": 0,
+  "fresh_output_sha256": "58482f6d84a2b60f6e6ae7742302b091693c96650d9ff02487af32545d564cc0",
+  "published_output_sha256": "58482f6d84a2b60f6e6ae7742302b091693c96650d9ff02487af32545d564cc0",
+  "fresh_output_byte_identical_to_published": true,
+  "rows": 3095,
+  "output_columns": 82,
+  "SQL_A_compared_fields": [
+    "late_n",
+    "eligible_n",
+    "action",
+    "membership",
+    "selected"
+  ],
+  "SQL_A_mismatched_fields": 0,
+  "parsing_warnings": {
+    "orders": 4748,
+    "items": 0,
+    "sellers": 0,
+    "all_actual_tokens": "NULL",
+    "carrier_date": 1783,
+    "customer_delivery_date": 2965
+  },
+  "limits": [
+    "MySQL and original CSV import not rerun",
+    "Linux R 4.3.3; not the original Windows environment",
+    "Source TSV public upload remains pending explicit approval"
+  ]
+}

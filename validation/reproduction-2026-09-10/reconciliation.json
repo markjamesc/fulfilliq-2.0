@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scope": "published-output comparison; no raw-data rebuild or causal validation",
+  "seller_rows": {
+    "SQL_A": 3095,
+    "R_B": 3095,
+    "overlap": 3095
+  },
+  "seller_ids_only_in_A": 0,
+  "seller_ids_only_in_R_B": 0,
+  "field_mismatch_counts": {
+    "late_n": 0,
+    "eligible_n": 0,
+    "action": 0,
+    "membership": 0,
+    "selected": 0
+  },
+  "action_counts_SQL_A": {
+    "ENROLL_RECOMMENDED": 7,
+    "INCONCLUSIVE": 2,
+    "STANDARD_NOT_QUALIFIED": 3086,
+    "WATCH": 0
+  },
+  "action_counts_R_B": {
+    "ENROLL_RECOMMENDED": 7,
+    "INCONCLUSIVE": 2,
+    "STANDARD_NOT_QUALIFIED": 3086,
+    "WATCH": 0
+  },
+  "selected_set_matches": true,
+  "inconclusive_set_matches": true,
+  "rate_comparison": "integer numerators and denominators; displayed LFR excluded",
+  "snapshot_note": "R(B) identity fields checked; A export has no snapshot column"
+}

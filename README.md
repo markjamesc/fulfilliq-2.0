@@ -69,7 +69,9 @@ With Python 3, run this from the repository root:
 python validation/check_published_outputs.py
 ```
 
-The checker reads already-published outputs. **A fresh raw-data rebuild still requires the three frozen B TSV inputs**, which are not committed. The reproduction guide distinguishes this output comparison from independently rerunning SQL and R.
+**Fresh R rebuild verified on September 10, 2026:** the unchanged script reproduced the published R(B) CSV byte-for-byte, and all 3,095 sellers matched SQL A on the five compared fields. [Execution evidence and environment](validation/reproduction-2026-09-10/README.md).
+
+The Python checker above compares output files. The separate R execution used the owner-supplied frozen B TSVs, whose hashes were verified. Public distribution of those three inputs is still pending approval; MySQL and the original CSV import were not rerun.
 
 ## Scope and limitations
 
