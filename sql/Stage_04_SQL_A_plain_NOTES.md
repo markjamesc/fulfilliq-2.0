@@ -9,13 +9,12 @@
 
 `Stage_04_SQL_A.sql` wraps Stage 3 judged-seller logic in `CREATE PROCEDURE` / `DELIMITER` / `CALL` / `DROP PROCEDURE`. The `fulfilliq_user` account lacks `CREATE ROUTINE`, so procedure creation fails with CREATE PROCEDURE denied.
 
-This plain script implements the **same** Stage 3 v0.2.1 judged-seller logic by unwrapping the procedure body into session SQL + `TEMPORARY` tables. Final output is lasting table `fulfilliq.a4_judged_seller`.
+This plain script implements the **same** Stage 3 v0.2.1 judged-seller logic by unwrapping the procedure body into session SQL + ordinary `a4_*` scratch tables. Final output is lasting table `fulfilliq.a4_judged_seller`.
 
 ## Privileges required
 
 - `SELECT` on frozen `raw_orders`, `raw_order_items`, `raw_sellers`
-- `CREATE` / `DROP` `TEMPORARY` TABLES
-- `CREATE` / `DROP` TABLE on `fulfilliq` (for `a4_judged_seller`)
+- `CREATE` / `DROP` TABLE on `fulfilliq` (for the ordinary `a4_*` scratch tables and `a4_judged_seller`)
 - **Not required:** `CREATE ROUTINE`, `EXECUTE`, `ALTER ROUTINE`, `CREATE TEMPORARY TABLES`
 
 ## Documented session vars (this run)
@@ -61,4 +60,6 @@ Includes (non-exhaustive): `seller_id` / `seller_key`, `late_n`, `eligible_n`, `
 mysql --skip-force -u fulfilliq_user -p fulfilliq < sql/Stage_04_SQL_A_plain.sql
 ```
 
-Use one dedicated connection (TEMPORARY tables are session-scoped). Inspect `a4_judged_seller` after success.
+Use one dedicated connection for the session variables and transaction. The ordinary scratch tables remain database objects, so avoid concurrent runs sharing their names. Inspect `a4_judged_seller` after success.
+
+Documentation corrected September 10, 2026 to match the committed plain SQL implementation; no analytical SQL or frozen output changed.
