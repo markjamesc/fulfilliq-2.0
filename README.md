@@ -23,6 +23,8 @@ SQL A and the independent R rebuild of SQL B's raw exports agree across all 3,09
 **Read the outcome:** [decision evaluation and candidate inventory](docs/stage-05-interpretation/04_STAGE5_DECISION_EVALUATION.md).  
 **Inspect the evidence:** [reconciliation freeze](docs/stage-04-execution-validation/02_EXACT_RECON_FREEZE.md) · [SQL A output](results/A_judged_seller_freeze.tsv) · [R(B) output](results/R_B_judged_seller.csv).
 
+![FulfillIQ 2.0 investigation summary](assets/fulfilliq-v2-decision-summary.svg)
+
 ## What validation caught
 
 The first R(B) run omitted **765 zero-eligible sellers** and disagreed with SQL A on **five actions**. The reconciliation record attributes these differences to incomplete half-window rules, an incomplete date/timestamp sensitivity implementation, and an incomplete seller universe.
